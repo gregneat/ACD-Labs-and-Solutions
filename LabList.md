@@ -50,6 +50,8 @@ Typing Game - one word, right, wrong
 <br>
 Enter and display text character by character
 <br>
+Typing Game - final
+<br>
 Recycle multiple labeled moving Rectangles
 <br>
 Make your own Car class
@@ -77,6 +79,8 @@ Make multiple recycling Car instances
 Make 100 recycling Car instances
 <br>
 Make 100 recycling Car instances on separate roads
+<br>
+Refine the Car class w a getName() method
 <br>
 Determine the fastest Car from the 100 Car objects
 <br>
