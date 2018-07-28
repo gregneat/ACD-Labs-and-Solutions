@@ -95,6 +95,7 @@ public class starter implements InputKeyControl {
 					System.out.println("U got it wrong.");
 					Text res = new Text(200,150, "WRONG!");
 					res.draw();
+					System.out.println(whereError(w,sent));
 				}
 			}
 			else
@@ -104,6 +105,17 @@ public class starter implements InputKeyControl {
 				dispAns.draw();
 				place = place+10;
 			}
+		}
+		private static int whereError(String key, String type)
+		{
+			for(int i=0;i<key.length();i++)
+			{
+				if(!key.substring(i,i+1).equals(type.substring(i,i+1)))
+				{
+					return i;
+				}
+			}
+			return -1;
 		}
 
 }

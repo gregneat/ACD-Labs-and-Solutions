@@ -18,7 +18,7 @@ public class starter implements InputKeyControl {
 			EasyReader in;
 			in = new EasyReader();
 			// String w = in.readLine();
-			w = "the quick.";
+			w = "the quick brown fox jumped.";
 			int wLen = w.length();
 			int m = -1;
 			// System.out.println(wLen);
@@ -73,7 +73,12 @@ public class starter implements InputKeyControl {
 					loc.translate(d,0);
 					loc.setText(box.getX()+", "+box.getY());
 				}
+				else
+				{
+					break;
+				}
 			}
+			// System.out.println("Congrats, you typed: "+howManyWords()+ " correctly");
 		}
 		public void keyPress(String s)
 		{
@@ -95,6 +100,7 @@ public class starter implements InputKeyControl {
 					System.out.println("U got it wrong.");
 					Text res = new Text(200,150, "WRONG!");
 					res.draw();
+					System.out.println("Congrats, you typed: "+howManyWords()+ " correctly");
 				}
 			}
 			else
@@ -105,5 +111,32 @@ public class starter implements InputKeyControl {
 				place = place+10;
 			}
 		}
-
+		private static int whereError(String key, String type)
+		{
+			for(int i=0;i<key.length();i++)
+			{
+				if(!key.substring(i,i+1).equals(type.substring(i,i+1)))
+				{
+					return i;
+				}
+			}
+			return -1;
+		}
+		private static int howManyWords()
+		{
+			int c = 0;
+			int i = whereError(w,sent);
+			String es = w.substring(0,i);
+			int index = w.indexOf(" ");
+			if(index < i)
+			{
+				while(index != -1)
+				{
+					c++;
+					es = es.substring(es.indexOf(index+1));
+					index = es.indexOf(" ");
+				}
+			}
+			return c;
+		}
 }
