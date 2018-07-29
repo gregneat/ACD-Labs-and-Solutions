@@ -1,7 +1,5 @@
-Lab Goal: Tell the user how many words they typed correctly.  Send the message to the graphics window.
-Assume both Strings (answer and typed) are same length.
-Also assume the error happens within a word, not a space or
-punctuation.
+Lab Goal: Tell the user at least how many words they typed correctly.  Send the message to the graphics window.
+
 
 CS Topics: String class, input/output, while loops, counter variables
 

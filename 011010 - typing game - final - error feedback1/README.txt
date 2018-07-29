@@ -1,7 +1,6 @@
-Lab Goal: Add to the simple typing game the feature that the index of where
-the first error is made is displayed in the command window to the user.
-This lab uses both the graphics window and the command window.  Assume both
-Strings (answer and typed) are same length.
+Lab Goal: Make a simple typing game where a phrase is displayed across the screen
+and the user tries to type the phrase as accurately and as fast as possible.  The app tells the user 
+if there were any errors.  This lab uses the graphics window.
 
 CS Topics: String class, input/output, while loops, counter variables
 

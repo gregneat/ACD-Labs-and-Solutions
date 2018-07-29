@@ -1,3 +1,19 @@
+
+// may have a runtime error...
+// sporadic runtime error:
+// C:\Users\gneat\Documents\GitHub\ACD-Labs-and-Solutions\011010 - typing game - final - error feedback1\labOutput>java -cp .; starter
+// Key Started
+// Exception in thread "main" java.util.ConcurrentModificationException
+        // at java.util.ArrayList$Itr.checkForComodification(Unknown Source)
+        // at java.util.ArrayList$Itr.next(Unknown Source)
+        // at Canvas$CanvasComponent.getPreferredSize(Canvas.java:58)
+        // at Canvas.repaint(Canvas.java:128)
+        // at Rectangle.translate(Rectangle.java:85)
+        // at starter.main(starter.java:71)
+// check if its correct
+// U got it wrong.
+// 6
+
 public class starter implements InputKeyControl {
 		private static int place;
 		private static String sent;
@@ -18,7 +34,7 @@ public class starter implements InputKeyControl {
 			EasyReader in;
 			in = new EasyReader();
 			// String w = in.readLine();
-			w = "the quick brown fox jumped.";
+			w = "the quick green dolphin jumped over the moon today.";
 			int wLen = w.length();
 			int m = -1;
 			// System.out.println(wLen);
@@ -73,12 +89,7 @@ public class starter implements InputKeyControl {
 					loc.translate(d,0);
 					loc.setText(box.getX()+", "+box.getY());
 				}
-				else
-				{
-					break;
-				}
 			}
-			// System.out.println("Congrats, you typed: "+howManyWords()+ " correctly");
 		}
 		public void keyPress(String s)
 		{
@@ -100,7 +111,10 @@ public class starter implements InputKeyControl {
 					System.out.println("U got it wrong.");
 					Text res = new Text(200,150, "WRONG!");
 					res.draw();
-					System.out.println("Congrats, you typed: "+howManyWords()+ " correctly");
+					String answer = w.substring(0,whereError(w,sent));
+					Text res2 = new Text(200,180,"You successfully typed at least: "+ howManyWords(answer)+" words.");
+					res2.draw();
+					//System.out.println("You made an error on character: "+whereError(w,sent));
 				}
 			}
 			else
@@ -113,28 +127,30 @@ public class starter implements InputKeyControl {
 		}
 		private static int whereError(String key, String type)
 		{
-			for(int i=0;i<key.length();i++)
+			int i = 0;
+			int minLen = Math.min(key.length(),type.length());
+			
+			for(i=0;i<minLen;i++)
 			{
 				if(!key.substring(i,i+1).equals(type.substring(i,i+1)))
 				{
 					return i;
 				}
 			}
-			return -1;
+			return i;
 		}
-		private static int howManyWords()
+		private static int howManyWords(String type)
 		{
 			int c = 0;
-			int i = whereError(w,sent);
-			String es = w.substring(0,i);
-			int index = w.indexOf(" ");
-			if(index < i)
+			int index = type.indexOf(" ");
+			String temp = type;
+			if(index > -1)
 			{
-				while(index != -1)
+				while(index > -1)
 				{
 					c++;
-					es = es.substring(es.indexOf(index+1));
-					index = es.indexOf(" ");
+					temp = temp.substring(index+1);
+					index = temp.indexOf(" ");
 				}
 			}
 			return c;

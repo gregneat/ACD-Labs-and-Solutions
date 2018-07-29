@@ -95,8 +95,7 @@ public class starter implements InputKeyControl {
 					System.out.println("U got it wrong.");
 					Text res = new Text(200,150, "WRONG!");
 					res.draw();
-					whatWord();
-					//System.out.println(whereError(w,sent));
+					System.out.println("You made an error on character: "+whereError(w,sent));
 				}
 			}
 			else
@@ -109,14 +108,17 @@ public class starter implements InputKeyControl {
 		}
 		private static int whereError(String key, String type)
 		{
-			for(int i=0;i<key.length();i++)
+			int i = 0;
+			int minLen = Math.min(key.length(),type.length());
+			
+			for(i=0;i<minLen;i++)
 			{
 				if(!key.substring(i,i+1).equals(type.substring(i,i+1)))
 				{
 					return i;
 				}
 			}
-			return -1;
+			return i;
 		}
 		private static void whatWord()
 		{
