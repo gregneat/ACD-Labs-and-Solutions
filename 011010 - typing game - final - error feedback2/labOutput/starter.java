@@ -2,10 +2,12 @@ public class starter implements InputKeyControl {
 		private static int place;
 		private static String sent;
 		private static String w;
+		private static boolean stillMoving;
         public static void main(String args[])
         {
 			// please leave alone, necessary for keyboard input
 			
+			stillMoving = true;
 			KeyController mC = new KeyController(Canvas.getInstance(),new starter());
 			place = 5;
 			sent = "";
@@ -51,23 +53,26 @@ public class starter implements InputKeyControl {
 			}
 			while(box.getX() < 570)
 			{
-				if(counter < w.length())
+				if(stillMoving)
 				{
-					if(box.getX() % bigT.getWidth() == 0)
+					if(counter < w.length())
 					{
-						String s = w.substring(counter, counter+1);
-						counter++;
-						Text tt = new Text(box.getX(),box.getY()+box.getWidth()/2,s);
-						tt.draw();
+						if(box.getX() % bigT.getWidth() == 0)
+						{
+							String s = w.substring(counter, counter+1);
+							counter++;
+							Text tt = new Text(box.getX(),box.getY()+box.getWidth()/2,s);
+							tt.draw();
+						}
 					}
+					int locDx = xStart-box.getX();
+					int locDy = yStart - box.getY();
+					Canvas.pause(td);
+					box.translate(d,0);
+					name.translate(d,0);
+					loc.translate(d,0);
+					loc.setText(box.getX()+", "+box.getY());
 				}
-				int locDx = xStart-box.getX();
-				int locDy = yStart - box.getY();
-				Canvas.pause(td);
-				box.translate(d,0);
-				name.translate(d,0);
-				loc.translate(d,0);
-				loc.setText(box.getX()+", "+box.getY());
 			}
 		}
 		public void keyPress(String s)
@@ -77,6 +82,7 @@ public class starter implements InputKeyControl {
 			String temp = Character.toString(done);
 			if(temp.equals(s))
 			{
+				stillMoving = false;
 				System.out.println("check if its correct");
 				if(sent.equals(w))
 				{
@@ -89,12 +95,42 @@ public class starter implements InputKeyControl {
 					System.out.println("U got it wrong.");
 					Text res = new Text(200,150, "WRONG!");
 					res.draw();
+					System.out.println("You made an error on character: "+whereError(w,sent));
 				}
 			}
-			sent = sent+s;
-			Text dispAns = new Text(place,200,s);
-			dispAns.draw();
-			place = place+10;
+			else
+			{
+				sent = sent+s;
+				Text dispAns = new Text(place,200,s);
+				dispAns.draw();
+				place = place+10;
+			}
 		}
-
+		private static int whereError(String key, String type)
+		{
+			int i = 0;
+			int minLen = Math.min(key.length(),type.length());
+			
+			for(i=0;i<minLen;i++)
+			{
+				if(!key.substring(i,i+1).equals(type.substring(i,i+1)))
+				{
+					return i;
+				}
+			}
+			return i;
+		}
+		private static void whatWord()
+		{
+			int i = whereError(w,sent);
+			int index = w.indexOf(" ");
+			if(index < i)
+			{
+				System.out.println("Congrats, you typed at least one word correct! ");
+			}
+			else
+			{
+				System.out.println("Bummer, no words correct. ");
+			}
+		}
 }
