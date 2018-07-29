@@ -50,7 +50,11 @@ Typing Game - one word, right, wrong
 <br>
 Enter and display text character by character
 <br>
-Typing Game - final
+Typing Game - final - error feedback1
+<br>
+Typing Game - final - error feedback2
+<br>
+Typing Game - final - error feedback3
 <br>
 Recycle multiple labeled moving Rectangles
 <br>
@@ -66,9 +70,9 @@ Refine Car class w location
 <br>
 Refine Car class w a getHeight method
 <br>
-Translate/Recycle a Car instance to cover whole frame (mow lawn)
+Translate/Recycle a Car instance to cover whole frame
 <br>
-Translate/Recycle a Car instance to cover whole frame (mow lawn) forever
+Recycle a Car instance to cover whole frame forever
 <br>
 Refine Car class w Color 
 <br>
