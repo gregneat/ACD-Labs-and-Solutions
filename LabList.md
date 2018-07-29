@@ -50,7 +50,11 @@ Typing Game - one word, right, wrong
 <br>
 Enter and display text character by character
 <br>
-Typing Game - final
+Typing Game - final - error feedback1
+<br>
+Typing Game - final - error feedback2
+<br>
+Typing Game - final - error feedback3
 <br>
 Recycle multiple labeled moving Rectangles
 <br>
