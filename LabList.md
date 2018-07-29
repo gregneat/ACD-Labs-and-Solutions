@@ -70,9 +70,9 @@ Refine Car class w location
 <br>
 Refine Car class w a getHeight method
 <br>
-Translate/Recycle a Car instance to cover whole frame (mow lawn)
+Translate/Recycle a Car instance to cover whole frame
 <br>
-Translate/Recycle a Car instance to cover whole frame (mow lawn) forever
+Recycle a Car instance to cover whole frame forever
 <br>
 Refine Car class w Color 
 <br>
