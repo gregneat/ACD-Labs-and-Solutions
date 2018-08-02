@@ -1,3 +1,5 @@
+// not completed...
+
 public class starter implements InputControl {
 	
 	private static Car[] traffic;
