@@ -95,3 +95,25 @@ Refine Rectangle class w a contains method
 Refine Car class w a contains method
 <br> 
 Refine Car class w a changeSpeed method
+<br>
+Make a Truck class
+<br>
+Make multiple recycling Cars and Trucks
+<br>
+Make a single Vehicle
+<br>
+Make a collection of Vehicles
+<br>
+Add boat trailer to Car 
+<br>
+Add boat trailer to Car w inheritance
+<br>
+Make a collection of Vehicles again
+<br>
+Make a collection of Vehicles again again
+<br>
+Make a collection of Vehicles again again again
+<br>
+Make an abstract Vehicle class - NOT DONE YET
+<br>
+Make a Road class - NOT DONE Yet
