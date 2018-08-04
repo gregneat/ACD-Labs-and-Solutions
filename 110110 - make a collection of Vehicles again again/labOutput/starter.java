@@ -1,16 +1,22 @@
-// not completed...why do we need this?
+// note this solution doesn't use arraylists
+
 
 public class starter implements InputControl {
 	
-	private static Car[] traffic;
+	private static Vehicle[] traffic;
 	
 	public static void main(String args[])
         {
 			// following line is necessary for onMouseClick, don't change
 			MouseController mC = new MouseController(Canvas.getInstance(),new starter());
+			// int r = (int)(Math.random()*255);
+			// int g = (int)(Math.random()*255);
+			// int b = (int)(Math.random()*255);
+			// Color temp = new Color(r,g,b);
+			// Truck joe = new Truck(30,30,"neato",temp,23);
 			// put your code here:
 			
-			traffic = new Car[5];
+			traffic = new Vehicle[5];
 			int yStart = 0;
 			for(int i=0; i<traffic.length;i++)
 			{
@@ -21,12 +27,25 @@ public class starter implements InputControl {
 				String s = "car ";
 				// make all cars go speed 1 to check average calc
 				int sp = (int)(Math.random()*5)+1;
-				int xStart = 5;
-				while(yStart%Car.CARHEIGHT != 0)
+				int xStart = 100;
+				while(yStart%Truck.CARHEIGHT != 0)
 				{
 					yStart++;
 				}
-				traffic[i] = new Car(xStart,yStart, s+i,temp,sp);
+				int flip = (int)(Math.random()*3);
+				if(flip == 0)
+				{
+					traffic[i] = new Truck(xStart,yStart, s+i,temp,sp);
+				}
+				else if(flip == 1)
+				{
+					traffic[i] = new Car(xStart,yStart, s+i,temp,sp);
+				}
+				else
+				{
+					traffic[i] = new CarWBoat(xStart,yStart, "car w boat",temp,sp);
+				}
+				
 				yStart++;
 			}
 			while(true)
@@ -43,17 +62,18 @@ public class starter implements InputControl {
 			}	
 		}
 
-		public void onMouseClick(double x, double y){
-			System.out.print("click ");
-			//System.out.println("x is: " + x + "y is: " + y);
+		public void onMouseClick(double x, double y)
+		{
+			// System.out.println("x is: " + x + "y is: " + y);
 			for(int i = 0; i<traffic.length;i++)
 			{
 				if(traffic[i].contains(x,y))
 				{				
 					traffic[i].changeSpeed(0);
-					System.out.print(traffic[i].getName() + " " +traffic[i].getSpeed());
+					traffic[i].translate(-1000,-1000);
+					// System.out.print(traffic[i].getName() + " " +traffic[i].getSpeed());
 				}
-				System.out.println();
+				// System.out.println();
 			}
 		}
 }
